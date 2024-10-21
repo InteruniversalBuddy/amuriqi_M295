@@ -59,34 +59,19 @@ Diese können auf der oberste Ebene oder in jedem Ordner gemacht werden. Es zäh
 Dass macht Man, dass Leute keinen Zugriff über den Browser/Links auf die ini Dateî und wichtige Dateien kommen.
 
 ### Umsetzen
-#### Datein Umleiten
 (Beispiel für htaccess Datei im FeBe)
 Diese Datein erstellen in "Tag1":<br>
 ![image](https://github.com/user-attachments/assets/992eef20-b960-4cfc-8e7b-eaeb9f55ee03)<br>
 
 Jetzt erstellen wir in beiden Ordnern eine .htaccess Daatei.
 Die im Tag1 soll alles zu index.php Umleiten und die in data soll den Zugriff zu den Datein im Ordner blocken.
+#### Datein Umleiten
 Hauptdatei:
 ```html
-DirectoryIndex index.php
-
-# enable apache rewrite engine
 RewriteEngine on
-
-# set your rewrite base
-# Edit this in your init method too if you script lives in a subfolder
-RewriteBase /
-
-# Deliver the folder or file directly if it exists on the server
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-l
-
-RewriteCond %{REQUEST_URI} !(\.css|\.js|\.png|\.jpg|\.jpeg|\.gif|\.xlsx|\.xls)$ [NC]
- 
-# Push every request to index.php
-RewriteRule ^(.*)$ index.php [QSA]
+RewriteRule . index.php [L]
 ```
+[L] steht für Last und bedeute das keine rewriteRule's mehr angenommen werden.
 #### Datein sperren
 Unterordner:
 ```html
@@ -94,4 +79,21 @@ Unterordner:
 Order allow,deny
 Deny from all
 </Files>
+```
+Egal was mann eingibt (fast) kommt Man auf die index.php Seite (wo ich Haiy hineingeschrieben habe):<br>
+![image](https://github.com/user-attachments/assets/41c73585-108e-4110-95ce-8f327a7bdb66)<br>
+Und wenn man versucht auf data zu gehen kommt das:<br>
+![image](https://github.com/user-attachments/assets/6a7f9235-2029-47b4-ab17-0e273b67267b)<br>
+#### Regeln
+Das problem mit der htaccess Datei im Tag1 ist, es leitet auch von Orten ausserhalb Tag1 um.
+Um dass zu umgehen müssen wir das hinzufügen:
+```html
+RewriteEngine on
+RewriteCond %{REQUEST_URI} ^/Tag1/
+RewriteRule . index.php [L]
+```
+Alternative Lösung:
+```html
+RewriteEngine on
+RewriteRule ^(.*) index.php [L]
 ```
