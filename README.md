@@ -43,3 +43,14 @@ In der Konfig Datei jetzt bei "Servername" die neue Seite hineinschreiben (a.loc
 </VirtualHost>
 ```
 Wir machen jetzt für jeden Tag einen Ordner und Seite (den prozess nochmals).
+
+## Konfigurationen
+### php.ini
+Unter "Konfig" bei Apache öffnen.<br>
+![image](https://github.com/user-attachments/assets/ec4024e0-fb3c-4bca-8470-d673fb6c4ee5)<br>
+Diese Linie finden und sichergehen das ; nicht vorne dran steht.
+Jetzt ist diese Extension active.
+
+### htaccess
+Eine Konfigurationsdatei für Apache-Webserver
+
