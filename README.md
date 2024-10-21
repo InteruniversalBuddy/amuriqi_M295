@@ -97,3 +97,13 @@ Alternative Lösung:
 RewriteEngine on
 RewriteRule ^(.*) index.php [L]
 ```
+## Git
+Ein Terminal öffnen.
+Auf Tag1 switchen.
+Dass auswählen:<br>
+![image](https://github.com/user-attachments/assets/b5e4161c-1c16-4319-95ce-39b56b37494a)<br>
+Und dann die cmd wählen:<br>
+![image](https://github.com/user-attachments/assets/81a8067e-0d7b-4814-879d-1830a1d0f97c)<br>
+Jetzt das Terminal schliessen und neu wählen, jetzt hat Man ein cmd Zeichen.
+Dor machen wir dann ein Git Repository:<br>
+![image](https://github.com/user-attachments/assets/ace070ff-25fb-4406-831a-4986479a60a7)<br>
