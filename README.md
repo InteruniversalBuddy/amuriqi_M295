@@ -105,5 +105,18 @@ Dass auswählen:<br>
 Und dann die cmd wählen:<br>
 ![image](https://github.com/user-attachments/assets/81a8067e-0d7b-4814-879d-1830a1d0f97c)<br>
 Jetzt das Terminal schliessen und neu wählen, jetzt hat Man ein cmd Zeichen.
-Dor machen wir dann ein Git Repository:<br>
+Dort machen wir dann ein Git Repository:<br>
 ![image](https://github.com/user-attachments/assets/ace070ff-25fb-4406-831a-4986479a60a7)<br>
+Die Sachen jetzt commiten.
+## PHP
+### Variablen
+#### definieren
+Werden immer mit einem $ am Anfang dargestellt.
+Dürfen diretk nach dem $ keine Zahl haben.
+Sonst _, Buchstaben & Zahlen erlaubt.
+#### Ausgaben
+Mit dem <pre>-Tag kann man Code schöner ausgeben lasse, z.B. Array's werden damit schöner formatiert.
+#### Arrays
+"count(array)" um die Anzahl Elemente im Array auszugeben.
+Mit json_encode kann man ein Array zu einem JSON Element umwandeln und mit json-decode zurück zu einem array.
+
