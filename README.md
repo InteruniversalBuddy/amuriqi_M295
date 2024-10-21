@@ -115,12 +115,14 @@ Werden immer mit einem $ am Anfang dargestellt.
 Dürfen diretk nach dem $ keine Zahl haben.
 Sonst _, Buchstaben & Zahlen erlaubt.
 #### Ausgaben
-Mit dem <pre>-Tag kann man Code schöner ausgeben lasse, z.B. Array's werden damit schöner formatiert.
+Mit dem ```<pre>```-Tag kann man Code schöner ausgeben lasse, z.B. Array's werden damit schöner formatiert.
 #### Arrays
 "count(array)" um die Anzahl Elemente im Array auszugeben.
 Mit json_encode kann man ein Array zu einem JSON Element umwandeln und mit json-decode zurück zu einem array.
 ### POST & GET
+#### Per Code
 Code:<br>
 ![image](https://github.com/user-attachments/assets/efa2f045-5e2b-4d47-9328-80b1658311ae)<br>
 Resultat:<br>
 ![image](https://github.com/user-attachments/assets/3203110a-b3f5-4fa6-8afd-d21388098628)<br>
+#### Postman
