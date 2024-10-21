@@ -119,4 +119,8 @@ Mit dem <pre>-Tag kann man Code schöner ausgeben lasse, z.B. Array's werden dam
 #### Arrays
 "count(array)" um die Anzahl Elemente im Array auszugeben.
 Mit json_encode kann man ein Array zu einem JSON Element umwandeln und mit json-decode zurück zu einem array.
-
+### POST & GET
+Code:<br>
+![image](https://github.com/user-attachments/assets/efa2f045-5e2b-4d47-9328-80b1658311ae)<br>
+Resultat:<br>
+![image](https://github.com/user-attachments/assets/3203110a-b3f5-4fa6-8afd-d21388098628)<br>
