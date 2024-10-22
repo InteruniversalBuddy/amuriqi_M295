@@ -132,20 +132,26 @@ Resultat:<br>
 ### Klassen
 Klasse erstellen:
 ```php
-class ClassName  {}
+class ClassName  {
+	public string $var1;
+	public int $var2;
+}
 ```
 Konstruktor erstellen:
 ```php
-public function __construct() {}
-```
-Um auf Klassenvariablen zuzugreifen (z.B im Konstruktor):
-```php
-$this->VarName = 10;
+public function __construct(string $var1, int $var2) {
+	$this->var1 = $var1;
+	$this->var2 = $var2;
+}
 ```
 #### Abstrakte Klassen
 Abstrakte Klasse erstellen:
 ```php
-abstract class AbstractClass {}
+    abstract class defaultCar {
+        public function drive() {
+            return "VROOOOOOOOOOOOM!!";
+        }
+    }
 ```
 FUnktionen von einer abstrakten Klasse kann man von überall abrufen.
 Abstrakte Klassen haben normalerweise keinen Konstruktor.
@@ -175,4 +181,16 @@ Wenn wir jetzt dort drin eine Klasse "car" haben und dann die File mit der Names
 namespace Tag2;
 include("cars.php");
 $car = new cars\car();
+```
+### Laden von Files/Klassen
+#### Require
+Anstatt mit include, kann man mit rquire arbeiten.
+
+#### Autoloader
+Mit dem Befehl ```spl_autoload_register``` kann man einen Autoloader erstellen.
+Mit so einem Code, werden jetzt alle Klassen in dem "lib" Ordner geladen:
+```php
+spl_autoload_register(function($class) {
+    include 'lib/' . $class . '.php';
+});
 ```
