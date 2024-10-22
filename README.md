@@ -188,9 +188,41 @@ Anstatt mit include, kann man mit rquire arbeiten.
 
 #### Autoloader
 Mit dem Befehl ```spl_autoload_register``` kann man einen Autoloader erstellen.
-Mit so einem Code, werden jetzt alle Klassen in dem "lib" Ordner geladen:
+Mit so einem Code, kann man jetzt mit dem Link angeben, welche Klassen man braucht:
 ```php
 spl_autoload_register(function($class) {
     include 'lib/' . $class . '.php';
 });
+```
+
+Wir machen eine Abfrage um den Link zu überprüfen:
+```php
+if(isset($_GET['class'])) {
+    $class = $_GET['class'];
+}else{
+    $class = 'cars';
+}
+echo $class;
+```
+Falls keine Klasse angegeben wird, wird die Klasse "cars" standardmässig verwendet.
+Wenn wir die Seite mit dem Link "index.php?class=books" öffnen, wird nur die Klasse books geladen.
+##### Mit Namespace
+Wenn wir jetzt bei jeder Klasse die Namespace "lib" hinzufügen, müssen wir denn Code ein wenig abändern.
+Zuerst nehmen wir vom Autoloader den Folderpfad weg:
+```php
+spl_autoload_register(function($class) {
+    include $class . '.php';
+});
+```
+Jetzt passen wir noch die Abfrage an:
+```php
+if (isset($_GET['class'])) {
+    $class = $defaultNamespace . $_GET['class'];
+} else {
+    $class = $defaultNamespace . 'cars';
+}
+```
+Wir können das noch kürzen:
+```php
+$class = $defaultNamespace . $_GET['class'] ?? 'cars';
 ```
