@@ -126,3 +126,53 @@ Code:<br>
 Resultat:<br>
 ![image](https://github.com/user-attachments/assets/3203110a-b3f5-4fa6-8afd-d21388098628)<br>
 #### Postman
+
+# Tag 2
+## OOP
+### Klassen
+Klasse erstellen:
+```php
+class ClassName  {}
+```
+Konstruktor erstellen:
+```php
+public function __construct() {}
+```
+Um auf Klassenvariablen zuzugreifen (z.B im Konstruktor):
+```php
+$this->VarName = 10;
+```
+#### Abstrakte Klassen
+Abstrakte Klasse erstellen:
+```php
+abstract class AbstractClass {}
+```
+FUnktionen von einer abstrakten Klasse kann man von überall abrufen.
+Abstrakte Klassen haben normalerweise keinen Konstruktor.
+#### Interface
+Ein Interface erstellen:
+```php
+interface Template{}
+```
+Interfaces haben mehrere Funktionen, die man dann direkt bei Klassen einbauen kann.
+So macht man eine Klasse mit einem INterface:
+```php
+class ClassName implements Template{}
+```
+#### Namespace
+Namespace wird verwendet um Namenskonflikte zu vermeiden.
+Vorallem beim verwenden bei 3rd party Applikationen serh gut.
+Wird normallerweise nur für Klassen verwendet.
+
+Namespace erstellen:
+```php
+namespace Tag2\cars;
+```
+Alle Kalssen in der Datei gehören jetzt zu der Namespace "Tag2\cars".
+
+Wenn wir jetzt dort drin eine Klasse "car" haben und dann die File mit der Namespace in einer anderen includieren, können wir so darauf zugreifen:
+```php
+namespace Tag2;
+include("cars.php");
+$car = new cars\car();
+```
