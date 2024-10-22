@@ -224,5 +224,21 @@ if (isset($_GET['class'])) {
 ```
 Wir können das noch kürzen:
 ```php
-$class = $defaultNamespace . $_GET['class'] ?? 'cars';
+$check = isset($_GET['class']) ? $_GET['class'] : 'cars';
+$class = $defaultNamespace . $check;
+```
+Das Problem mit dieser Methode, ist das dies nicht mehr funktioniert, wenn wir andere Ordner und Namespaces haben.
+
+### MVC
+#### Logik
+Es gibt in der MVC Architectur drei zusammenarbeitende Objekte, das Model, die View und der Controller.
+Das Model ist die Datenbank und hält die Datenobjekte.
+Die View ist das was der Nutzer sieht (templates).
+Der Controller ist die Verbindung zum Server und sendet/bekommt Daten.
+#### Verzeichnisstruktur
+(Auf testing Ordner von FeBe)
+### Respones Code
+Um einen Error Code zu senden:
+```php
+http_response_code(404);
 ```
