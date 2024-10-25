@@ -271,9 +271,23 @@ So kann man die Packete herunterladen:
 ```cmd
 composer download
 ```
-### Nutzung
+### Struktur erstellen
+#### public
 Ein Public Ordner erstellen.
 Dort drin eine index.html Datei erstellen.
 In der Apache-Konfig den Pfad von dem Tag3 (c.local) am Ende "/public" hinschreiben.
 Jetzt sollte die Seite (c.local) direkt zu diesem index.html führen.
 Dass macht man, weil der Browser nur auf die public Dateien Zugriff haben soll und nicht die anderen.
+#### Initialisieren
+Terminal/Konsole öffnen und zu dem Tag3 gehen.
+Den Befehl ausführen:
+```cmd
+composer init
+```
+Jetzt kommen einige Fragen, bei der ersten tut man normeallerweise GitHubName/ProjektName. (interuniversalbuddy/amuriqi_m295)
+Als nächstes die Beschreibung. (M295-Tag3)
+Beim rest einfach Enter drücken.
+
+Jetzt sollten zwei neue Ordner und eine Datei auf der gleichen Ebene wie der public Ordner gemacht.<br>
+![image](https://github.com/user-attachments/assets/1f98e005-8b02-4616-b1f1-389d6dd004cc)<br>
+
