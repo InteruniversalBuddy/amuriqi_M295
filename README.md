@@ -292,8 +292,8 @@ Jetzt sollten zwei neue Ordner und eine Datei auf der gleichen Ebene wie der pub
 ![image](https://github.com/user-attachments/assets/1f98e005-8b02-4616-b1f1-389d6dd004cc)<br>
 
 Beim weitergeben des Projektes, muss die Venodor Datei nicht mitgegeben werden, aber die composer,json Datei sschon.
-### Routing
-#### Installieren
+## Routing
+### Installieren
 Auf Packagist finde, diesen Command: (gleichen Ordner wie vorher)
 ```cmd
 composer require steampixel/simple-php-router
@@ -302,7 +302,7 @@ Jetzt sollte im composer.jsion eine "require" Section erschienen sein:<br>
 ![image](https://github.com/user-attachments/assets/dc211094-d2dd-40f4-b35b-de9f5f73a141)<br>
 Wir schreiben noch hinzu das die PHP-Version mind. 8.0 sein soll:<br>
 ![image](https://github.com/user-attachments/assets/9535f210-e2be-4fc4-918d-c7a2db7d8649)<br>
-#### Verbinden
+### Verbinden
 index.html zu index.php ändern.
 Mit diesem Befehl sagen wir, dass wir ALLE Variablen zuerst deklarieren und danach verwemnden:
 ```php
@@ -331,7 +331,7 @@ Route::run('/');
 Wegen dem ```Route::run('/');``` wenn wir in den Link z.B. /hallo schreiben (c.local/hallo) versucht er eine hallo-Datei zu öffnen.
 Was heisst wir müssen eine htaccess Datei verwenden.
 
-#### Seiten einstellen
+### Seiten einstellen
 Die zweitletzten Abschnitt so abändern:
 ```php
 Route::add('/info', function() {
@@ -385,7 +385,8 @@ Route::add('/([a-zA-Z0-9]*)', function($class) {
     class_exists($libclass) ? $app = new $libclass() : print "Class $class not found";
 }, 'get');
 ```
-#### Klasse mit Methode
+### Klassen
+#### Mit Methode
 Zuerst machen wir einen neuen Abschnitt, wenn man noch einen / eingibt, mti den gleichen regeln.
 Wir nehmen den zweiten als ```$methode``` mit und nutzen es:
 ```php
@@ -408,7 +409,7 @@ In der Klasse müssen wir dann die Methode suchen und callen wenn sie existiert:
         echo "<br><h1>aaaaaa</h1>";
     }
 ```
-##### Mit parameter
+#### Mit parameter
 Wenn wir jetzt auch noch parameter verwenden wollen geht das so:
 ```php
 Route::add('/([a-zA-Z0-9]*)/([a-zA-Z0-9]*)/([a-zA-Z0-9]*)', function($class, $methode, $parameter) {
@@ -427,5 +428,57 @@ Falls die Methode keine Parameter hat, geht es trotzdem.
 Eine neue app Datei erstellen.
 Diese auch in composer.json einfügen:
 ```json
-method_exists($this, $methode) ? $this->$methode($parameter) : "";
+"app\\": "app/"
+```
+
+Jetzt wechseln wir alle ```$libclass``` zu ```$appclass```, weil die Benutzer eigentlich nciht auf die Library zugriefen müssen, aber auf die Applikationen.
+
+### Default routing
+Falls ein Link eingegeben wird für den wir keinen Fall haben, wollen wir auch das dieser irgenwo hinführt.
+Dazu machen wir ein default mit diesem Command:
+```php
+Route::pathNotFound(function(){
+    echo '<h1>Error 404 D=</h1>';   
+});
+```
+
+
+
+
+
+# Regeln
+## Code
+Klassen immer beschreiben.
+```php
+/**
+ * Die Klasse Cars ruft dynamisch Methoden auf oder initialisiert ein Test-Objekt.
+ */
+class cars {
+```
+Klassen-parameter beschreiben.
+```php
+    /** @var test Eine Instanz der Test-Klasse */
+    private test $test;
+```
+Konstruktor-parameter beschreiben.
+```php
+    /**
+     * Konstruktor der Klasse Cars.
+     * 
+     * @param string $methode Der Name der Methode, die aufgerufen werden soll.
+     * @param string $parameter Ein optionaler Parameter, der an die Methode übergeben wird.
+     */
+    public function __construct(string $methode = "", string $parameter = "") {
+```
+Parameter immer deklarieren.
+Default wert nicht null. (="")
+```php
+    /**
+     * Beispielmethode a.
+     * 
+     * @return void
+     */
+    public function a(string $a="myself"): void {
+        echo "I love $a!!! <3";
+    }
 ```
