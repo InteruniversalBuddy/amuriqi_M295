@@ -302,7 +302,7 @@ Jetzt sollte im composer.jsion eine "require" Section erschienen sein:<br>
 ![image](https://github.com/user-attachments/assets/dc211094-d2dd-40f4-b35b-de9f5f73a141)<br>
 Wir schreiben noch hinzu das die PHP-Version mind. 8.0 sein soll:<br>
 ![image](https://github.com/user-attachments/assets/9535f210-e2be-4fc4-918d-c7a2db7d8649)<br>
-#### VErbinden
+#### Verbinden
 index.html zu index.php ändern.
 Mit diesem Befehl sagen wir, dass wir ALLE Variablen zuerst deklarieren und danach verwemnden:
 ```php
@@ -327,3 +327,24 @@ Route::add('/user/([0-9]*)/edit', function($id) {
 // Run the router
 Route::run('/');
 ```
+
+Wegen dem ```Route::run('/');``` wenn wir in den Link z.B. /hallo schreiben (c.local/hallo) versucht er eine hallo-Datei zu öffnen.
+Was heisst wir müssen eine htaccess Datei verwenden.
+
+#### Seiten einstellen
+Die zweitletzten Abschnitt so abändern:
+```php
+Route::add('/info', function() {
+    phpinfo();
+}, 'get');
+```
+Wenn wir jetzt auf c.local/ifno gehen, werden die PHP Daten ausgegeben.
+Wir erstellen noch eine .htaccess Datei, mit den standard Einstellungen im public.
+
+So können wir jetzt mehrere Seiten hinzufügen:
+```php
+Route::add('/([a-zA-Z0-9]*)', function($class) {
+    echo "Hello $class!";
+}, 'get');
+```
+Bei diesem wird jetzt "Hallo" und dann das Eingegebene ausgegeben, solange es aus Buchstaben & Zahlen besteht.
