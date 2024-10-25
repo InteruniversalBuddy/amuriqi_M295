@@ -242,3 +242,32 @@ Um einen Error Code zu senden:
 ```php
 http_response_code(404);
 ```
+
+# Tag 3
+## Composer
+### Installation
+Composer ist ein Paketmanager, der PHP-Packete verwaltet.
+Auch ein Abhängigkeitsverwalter (Dependency Manager).
+Zum Composer installieren:
+```cmd
+npm install --save composer
+```
+(Globaler Download / Ordner spielt keine Rolle)
+Zum testen welche Version man hat:
+```cmd
+composer -v
+```
+Ansonsten per Installer holen.
+### Wichtige Commands
+Bei einem Composer Projekt kann man die PACKETE mit diesem Befehl updaten
+```cmd
+composer update
+```
+Mann kann automatische Updates (für Composer selbst) so einschalten:
+```cmd
+composer auto-update
+```
+So kann man die Packete herunterladen:
+```cmd
+composer download
+```
