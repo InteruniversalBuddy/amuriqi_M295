@@ -385,3 +385,26 @@ Route::add('/([a-zA-Z0-9]*)', function($class) {
     class_exists($libclass) ? $app = new $libclass() : print "Class $class not found";
 }, 'get');
 ```
+#### Klasse mit Methode
+Zuerst machen wir einen neuen Abschnitt, wenn man noch einen / eingibt, mti den gleichen regeln.
+Wir nehmen den zweiten als ```$methode``` mit und nutzen es:
+```php
+Route::add('/([a-zA-Z0-9]*)/([a-zA-Z0-9]*)', function($class, $methode) {
+    echo "Hello $class!";
+    $libclass = "lib\\$class";
+    class_exists($libclass) ? $app = new $libclass($methode) : print "Class $class not found";
+}, 'get');
+```
+
+In der Klasse müssen wir dann die Methode suchen und callen wenn sie existiert:
+```php
+    public $methode;
+    public function __construct($methode){
+        echo "Hello from test class";
+        method_exists($this, $methode) ? $this->$methode() : "";
+    }
+
+    public function a(){
+        echo "<br><h1>aaaaaa</h1>";
+    }
+```
