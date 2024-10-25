@@ -284,10 +284,46 @@ Den Befehl ausführen:
 ```cmd
 composer init
 ```
-Jetzt kommen einige Fragen, bei der ersten tut man normeallerweise GitHubName/ProjektName. (interuniversalbuddy/amuriqi_m295)
+Jetzt kommen einige Fragen, bei der ersten tut man normeallerweise GitHubName/RepositoryName. (interuniversalbuddy/amuriqi_m295)
 Als nächstes die Beschreibung. (M295-Tag3)
 Beim rest einfach Enter drücken.
 
 Jetzt sollten zwei neue Ordner und eine Datei auf der gleichen Ebene wie der public Ordner gemacht.<br>
 ![image](https://github.com/user-attachments/assets/1f98e005-8b02-4616-b1f1-389d6dd004cc)<br>
 
+Beim weitergeben des Projektes, muss die Venodor Datei nicht mitgegeben werden, aber die composer,json Datei sschon.
+### Routing
+#### Installieren
+Auf Packagist finde, diesen Command: (gleichen Ordner wie vorher)
+```cmd
+composer require steampixel/simple-php-router
+```
+Jetzt sollte im composer.jsion eine "require" Section erschienen sein:<br>
+![image](https://github.com/user-attachments/assets/dc211094-d2dd-40f4-b35b-de9f5f73a141)<br>
+Wir schreiben noch hinzu das die PHP-Version mind. 8.0 sein soll:<br>
+![image](https://github.com/user-attachments/assets/9535f210-e2be-4fc4-918d-c7a2db7d8649)<br>
+#### VErbinden
+index.html zu index.php ändern.
+Mit diesem Befehl sagen wir, dass wir ALLE Variablen zuerst deklarieren und danach verwemnden:
+```php
+declare(strict_types= 1);
+```
+Jetzt wollen wir den composer verwenden (alle Klassen im Vendor werden geladen):
+```php
+require __DIR__ ."/../vendor/autoload.php";
+```
+
+**Anleitungen & Besipiele auf Steampixel Packagist!!**
+Wir kopieren das "Simple Example" ohne den ersten Teil.
+```php
+// Use this namespace
+use Steampixel\Route;
+
+// Add the first route
+Route::add('/user/([0-9]*)/edit', function($id) {
+  echo 'Edit user with id '.$id.'<br>';
+}, 'get');
+
+// Run the router
+Route::run('/');
+```
