@@ -348,3 +348,40 @@ Route::add('/([a-zA-Z0-9]*)', function($class) {
 }, 'get');
 ```
 Bei diesem wird jetzt "Hallo" und dann das Eingegebene ausgegeben, solange es aus Buchstaben & Zahlen besteht.
+#### Library
+Wir erstellen einen lib Ordner und dort drin test.php:
+```php
+declare(strict_types= 1);
+
+namespace lib;
+
+class test{
+    public function __construct(){
+        echo "Hello from test class";
+    }
+}
+```
+
+**Wenn wir versuchen auf die Namespace zuzugriefen funktioniert dies nicht, weil der Composer die Namespace nicht kennt!**
+Um dieses Problem zu lösen fügen wir in der composer.json Datei unter "psr-4" diese Linie erstellen:
+```json
+"lib\\": "lib/"
+```
+Wir müssen dann noch in der Konsole ```composer dump-autoload ``` ausführen.
+Jetzt müssen wir noch anpassen wie die Klasse gecallt wird:
+```php
+Route::add('/([a-zA-Z0-9]*)', function($class) {
+    echo "Hello $class!";
+    $libclass = "lib\\$class";
+    $app = new $libclass;
+}, 'get');
+```
+
+Jetzt testen wir zuerst noch ob die Klasse existiert:
+```php
+Route::add('/([a-zA-Z0-9]*)', function($class) {
+    echo "Hello $class!";
+    $libclass = "lib\\$class";
+    class_exists($libclass) ? $app = new $libclass() : print "Class $class not found";
+}, 'get');
+```
