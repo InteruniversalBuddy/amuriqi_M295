@@ -408,3 +408,24 @@ In der Klasse müssen wir dann die Methode suchen und callen wenn sie existiert:
         echo "<br><h1>aaaaaa</h1>";
     }
 ```
+##### Mit parameter
+Wenn wir jetzt auch noch parameter verwenden wollen geht das so:
+```php
+Route::add('/([a-zA-Z0-9]*)/([a-zA-Z0-9]*)/([a-zA-Z0-9]*)', function($class, $methode, $parameter) {
+    echo "Hello $class!";
+    $libclass = "lib\\$class";
+    class_exists($libclass) ? $app = new $libclass($methode, $parameter) : print "Class $class not found";
+}, 'get');
+```
+Hier anpassungen in der Klasse:
+```php
+method_exists($this, $methode) ? $this->$methode($parameter) : "";
+```
+Falls die Methode keine Parameter hat, geht es trotzdem.
+
+### App
+Eine neue app Datei erstellen.
+Diese auch in composer.json einfügen:
+```json
+method_exists($this, $methode) ? $this->$methode($parameter) : "";
+```
