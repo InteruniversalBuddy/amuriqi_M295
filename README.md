@@ -271,3 +271,9 @@ So kann man die Packete herunterladen:
 ```cmd
 composer download
 ```
+### Nutzung
+Ein Public Ordner erstellen.
+Dort drin eine index.html Datei erstellen.
+In der Apache-Konfig den Pfad von dem Tag3 (c.local) am Ende "/public" hinschreiben.
+Jetzt sollte die Seite (c.local) direkt zu diesem index.html führen.
+Dass macht man, weil der Browser nur auf die public Dateien Zugriff haben soll und nicht die anderen.
