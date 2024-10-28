@@ -504,17 +504,98 @@ composer require vlucas/valitron
 ```
 Es sollte im composer.json eine neue Line unter "require" haben und im Vendor Ordner hat es einen neuen "vlucas" Ordner:<br>
 ![image](https://github.com/user-attachments/assets/47a6b2eb-20c1-40dd-b0dd-d7ef8a8a5152)<br>
-### Benutzen
-#### Erstellen
+### Einstellen
+#### Erstellung
+Ganz oben den Validator benutzen:
+```php
+use Valitron\Validator;
+```
 Neuen Validator erstellen:
 ```php
 $v = new Validator($carData);
 ```
-#### Regeln einstellen
+#### Regeln definieren
+(Regeln findet man auch im Packagist!!)
 Mit diesem Befehl:
 ```php
 $v->rule();
 ```
+
+So kann man definieren das ein Feld ausgefüllt sein MUSS:
+```php
+$v->rule('required', 'name');
+```
+
+#### Daten validieren
+Wir überptüfen mit ```$v->validate();``` ob alle Felder valide sind und können mit einem IF & ELSE arbeiten, bei ELSE können wir so die Error(s) ausgeben:
+```php
+echo "Fehler: <pre>";
+echo $v->errors();
+echo "</pre>";
+```
+Es wird dann getestet ob alle Regeln die wir erstellt haben erfüllt sind.
+
+Wenn wir den namen als require gesetzt haben und dann keinen angeben sollte dies ehrauskommen:
+```
+<pre>Array
+(
+    [name] => Array
+        (
+            [0] => Name is required
+        )
+)
+</pre>
+```
+
+### Testing
+#### Struktur
+Erstelle einen neuen "Test" Ordner und dort drin die Dateien "crud.php" & "run.cmd".
+Wir schreiben diesen Code in run.cmd:
+```cmd
+cls
+php crud.php
+pause
+```
+
+Jetzt machen wir Rechtsclick auf die Datei und wählen es so aus:<br>
+![image](https://github.com/user-attachments/assets/f9313304-eea7-4ee3-b29f-53e0f7c09aa4)<br>
+In dem geöffneten Terminal geben wir jetzt einfach crud.php ein, und die Datei wird ausgeführt.
+
+Zuerst includieren wir alle Dateien:
+```php
+include "./../lib/database.php";
+include "./../app/cars/model.php";
+include "./../app/cars/cars.php";
+```
+
+Wir können auch nur den Autoloader includieren und es wrid automatisch alles verwendet:
+```php
+include "./../vendor/autoloader.php";
+```
+#### Farben
+Wir können in PHP die Farben der ausgabe wechseln.
+Wir speichern die Einstellungen dafür in einzelnen Variablen:
+```php
+$green = "\033[32m";
+$red = "\033[31m";
+$yellow = "\033[33m";
+$reset = "\033[0m";
+```
+Wichtig, immer am schluss den $reset verwenden um die Farbe zurück auf normal zu setzten.
+Besispiel Nutzung:
+```php
+echo "$yellow Testing CRUD operations\n $reset";
+```
+Dieser Text sollte gelb sein, aber alles danach nicht mehr.
+#### Insert testen
+
+
+
+
+
+
+
+
 
 
 
