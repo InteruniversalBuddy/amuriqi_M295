@@ -590,6 +590,50 @@ Dieser Text sollte gelb sein, aber alles danach nicht mehr.
 #### Insert testen
 
 
+### PHP Validierung
+#### Installieren
+Zuerst laden wir phpstan und phpunit herunter.
+PHPstan wird verwendet um zu testen ob PHP-Code korrekt ist.
+Es gibt mehrere verschiedene Levels, mit anderen Regeln, für uns ist es nur bis ca. Level6 wichtig.
+Per Packagist herunterladen:
+PHPstan: ```composer require --dev phpstan/phpstan```,
+PHPunit: ```composer require --dev phpunit/phpunit```.
+Eventuell kommt ein Error, das liegt daran, dass wir die zip Extension fon php.init gebruachen, also in die Datei gehen udn die Extension einkommentieren.
+#### Analysieren
+Wir können jetzt mit diesem befehl analysieren, wir können mit der Zahl hinter -l das Level angehen (alle von 1-6 sollten keine Errors geben):
+```cmd
+php vendor/bin/phpstan analyse -l 1 app
+```
+### Login-system
+#### Struktur
+Im App Ordner noch einen App Ordner erstellen.
+Dort drin die Datei "app.php" erstellen.
+Konstruktor von cars.php stehlen und anpassen:
+```php
+class app {
+    public function __construct(string $methode = "", string $parameter = "") {
+        if (!empty($methode) && method_exists(object_or_class: $this, method: $methode)) {
+            try {
+                $this->$methode($parameter);
+            } catch (\Exception $e) {
+                echo "Error: " . $e->getMessage();
+            }
+        } else {
+            \lib\response::errorJSON(["error" => true]);
+        }
+    }
+}
+```
+
+Wir erstellen drei weiter Methoden, login, logout & status.
+#### Logik
+
+
+
+
+
+
+
 
 
 
