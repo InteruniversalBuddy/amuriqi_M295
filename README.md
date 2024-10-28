@@ -442,6 +442,81 @@ Route::pathNotFound(function(){
 });
 ```
 
+# Tag 4
+## Funktionen mit Postman
+### Insert
+Alles von gestern (oder Besispiel Mudol) kopieren.
+Wir passen den Code an, dass er die Daten aus dem Post nimmt (insertData):
+```php
+        if (empty($_POST)) {
+            echo "Fehler: Keine POST-Daten vorhanden.\n";
+            return;
+        }else{
+            $carData = [
+                "name" => $_POST["name"],
+                "price" => $_POST["price"],
+                "kraftstoff" => $_POST["kraftstoff"],
+                "farbe" => $_POST["farbe"],
+                "bauart" => $_POST["Limousine"],
+                "tank" => $_POST["tank"],
+                "jahrgang" => $_POST["2023-01-01"]
+            ];
+
+            $sql = "INSERT INTO cars (name, price, kraftstoff, farbe, bauart, tank, jahrgang) 
+                    VALUES (:name, :price, :kraftstoff, :farbe, :bauart, :tank, :jahrgang)";
+            
+            try {
+                $this->model->execute($sql, $carData);
+                echo "Eintrag erfolgreich hinzugefügt.";
+            } catch (Exception $e) {
+                echo "Fehler beim Hinzufügen: " . $e->getMessage();
+            }
+```
+
+Auf "New" drücken und HTTP wählen:<br>
+![image](https://github.com/user-attachments/assets/1b601b48-9577-4ecc-8c6d-6e1f991b44d3)<br>
+
+Bei der Methode "Post" auswählen und den Link für einen Insert hineinschreiben (http://d.local/cars/insertData).
+Jetzt unten bei **Body** auf "form-data" gehen und die einzelnen Parameter für den Insert hineeinschreiben:<br>
+![image](https://github.com/user-attachments/assets/c0cf150d-be65-4af3-aae7-1bb8b7f44d83)<br>
+Unten kann Man das Ergebnis sehen, es sollte hoffentlich keinen Error geben.
+
+### Delete
+Die Id mit einem Parameter übergeben:
+```php
+    public function deleteData($carId): void {
+        $sql = "DELETE FROM cars WHERE id = :id";
+        
+        try {
+            $this->model->execute($sql, ["id" => $carId]);
+            echo "Eintrag erfolgreich gelöscht.";
+        } catch (Exception $e) {
+            echo "Fehler beim Löschen: " . $e->getMessage();
+        }
+    }
+```
+
+## Validator
+### Installieren
+Auf Packagist den "vlucas valitron" mit dem Command herunterladen:
+```cmd
+composer require vlucas/valitron
+```
+Es sollte im composer.json eine neue Line unter "require" haben und im Vendor Ordner hat es einen neuen "vlucas" Ordner:<br>
+![image](https://github.com/user-attachments/assets/47a6b2eb-20c1-40dd-b0dd-d7ef8a8a5152)<br>
+### Benutzen
+#### Erstellen
+Neuen Validator erstellen:
+```php
+$v = new Validator($carData);
+```
+#### Regeln einstellen
+Mit diesem Befehl:
+```php
+$v->rule();
+```
+
+
 
 
 
