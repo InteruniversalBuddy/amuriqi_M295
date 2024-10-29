@@ -271,6 +271,10 @@ So kann man die Packete herunterladen:
 ```cmd
 composer download
 ```
+Falls man in der composer.json Datei änderungen macht, kann man diese so auf die .lick File hochladen:
+```cmd
+composer dump-autoload
+```
 ### Struktur erstellen
 #### public
 Ein Public Ordner erstellen.
@@ -605,7 +609,7 @@ Wir können jetzt mit diesem befehl analysieren, wir können mit der Zahl hinter
 php vendor/bin/phpstan analyse -l 1 app
 ```
 ### Login-system
-#### Struktur
+#### Struktur	
 Im App Ordner noch einen App Ordner erstellen.
 Dort drin die Datei "app.php" erstellen.
 Konstruktor von cars.php stehlen und anpassen:
@@ -627,6 +631,56 @@ class app {
 
 Wir erstellen drei weiter Methoden, login, logout & status.
 #### Logik
+
+
+### Testing mit Test-Klassen
+#### Struktur
+Wir erstellen in dem Test Ordner, eine neue Datei "testCars.php".
+Diese Test-Klassen benutzen PHPunit (Unit Testing).
+```php
+<?php
+include "vendor/autoload.php";
+use app\cars\cars;
+
+class testCars extends \PHPUnit\Framework\TestCase
+{
+    public function testInsertClass()
+    {
+        $cars = new cars();
+        $this->assertNotNull($cars);
+    }
+}
+```
+In der cmd mit ```// php vendor/bin/phpunit test/testCars.php --colors``` kann man dan die Klasse testen lassen.
+
+Jetzt laden wir von Moodle eine erste Version herunter (Für den Code der Datei).
+
+
+### IP Verweigern
+Code:
+```php
+function checkIP(){
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $apiURL = "https://ip-api.io/json/" . $ip;
+    $ch = curl_init($apiURL);
+
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $apiResponse = curl_exec($ch);
+    curl_close($ch);
+
+    $data = json_decode($apiResponse, true);
+
+    if(isset($data['countryCode'])&&$data['countryCode']=='CH'){
+      return true;
+    }else{
+        return false;
+    }
+}
+```
+
+
+
+
 
 
 
